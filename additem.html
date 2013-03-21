@@ -18,7 +18,12 @@
 		<!-- App Header -->
 		<h1><a href="../VFW_Project3/index.html">Birthday Organizer</a></h1>
 		<p> An app primarily used for what you will need on the daily bases. You can use this app to edit and customize any pre-existing birthday added already in your birthday list or you can just add a birthday right on the go.</p>  
-		<form action="#" method="post">
+		<nav>
+            <a href= "#" id="displayLink">Display Data</a>
+            <a href= "#" id="clear">Clear Stored Data</a>
+   	    	<a href= "additem.html" id="addNew" style="display;none;">Add New Birthday</a>
+        </nav>	
+        <form action="#" method="post" id="contactForm" />
 			<fieldset>
 				<legend>Birthday Information</legend>
 				<ul>
@@ -64,13 +69,9 @@
 					<li><label for="Notes">Additional Notes:</label><textarea id="Notes"></textarea></li>
 					<li><input type="hidden" value="true" /></li>
 						</ul>
-			</fieldset>	
-					<form action="../VFW_Project3/index.html"><Input type="submit" value="Add Birthday" id="submit" /></Input>
-					</form> 			
-			<nav>
-            	<a href= "a" id="displayLink">Display Data</a>
-                <a href= "a" id="clear">Clear Stored Data</a>
-          	</nav>	
-				<script src="../VFW_Project3/js/Main.js" type="text/javascript"></script>
+				</fieldset>	
+				<input type="submit" value="Add Birthday" id="submit" /><br /Input>
+			</form> 			
+			<script src="../VFW_Project3/js/Main.js" type="text/javascript"></script>
 		</body>
 </html>
