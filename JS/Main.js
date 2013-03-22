@@ -134,6 +134,19 @@ window.addEventListener("DOMContentLoaded", function(){
 		editSubmit.addEventListener("click", validate);
 		editSubmit.key = this.key;
 	}
+	
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this birthday?");
+		if(ask){
+			local.Storage.removeItem(this.key);
+			window.location.reload();
+		}else{
+			alert("Contact was not deleted!");
+			window.location.reload();
+			return false;
+		}
+}
+			
 	 
 	function clearLocal() {
 		if(localStorage.length === 0){
@@ -146,12 +159,67 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function validate(){
-		
+	function validate(e){
+		var getfname   = ('fname');
+		var getlname   = ('lname');
+		var getdate    = ('date');
+		var getage     = ('age');
+		var getemial   = ('email');
+		var getaddr    = ('addr');
+	
+		var messageAry = [];
+		// First Name Message
+		if(getfname.value === ""){
+			var fnameError = "Please enter a First name."
+			getfname.style.border = "1px solid red";
+			messageAry.push(fnameError);
+	    }
+	 	// Last Name Message
+		if(getlname.value === ""){
+			var lnameError = "Please enter a Last name."
+			getlname.style.border = "1px solid red";
+			messageAry.push(lnameError);
+	    }
+		// Date Message
+		if(getdate.value === ""){
+			var dateError = "Please enter a Date."
+			getdate.style.border = "1px solid red";
+			messageAry.push(dateError);
+	    }
+		// Age Message
+		if(getage.value === ""){
+			var ageError = "Please enter your age."
+			getage.style.border = "1px solid red";
+			messageAry.push(ageError);
+	    }
+		// Email Message
+		var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+		if(!(re.exec(getEmail.value))){
+			var emailError = "Please enter a valid email address.";
+			getemail.style.border = "1px solid red";
+			messageAry.push(emailError);
 		}
-	 
-	 var sexValue
-	 ;
+		// Address Message
+		if(getaddr.value === ""){
+			var addrError = "Please enter an Address."
+			getaddr.style.border = "1px solid red";
+			messageAry.push(addrError);
+	    }
+		if(messageAry.length >= 1){
+			for(var i=0, j=messageAry.length; i < j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+			
+		}
+		e.preventDefault();
+		return false;
+	}
+		
+	var sexValue,
+		errMsg = $('errors');
+		 
 	
 	
 	
@@ -160,18 +228,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
-	save.addEventListener("click", storeData);
-});
- /*function validateForm() {
-	 var getEmail = document.forms[0]["email"].value;
-	 var re = /^\w+(\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	 	if (!(re.exec(getEmail))) {
-			error = "Please enter a valid email address.\n";
-		}
-		if (error) alert(error);
-		
-};*/
+	save.addEventListener("click", validate);
 
+});
+ 
 
 
 

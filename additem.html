@@ -23,10 +23,12 @@
             <a href= "#" id="clear">Clear Stored Data</a>
    	    	<a href= "additem.html" id="addNew" style="display;none;">Add New Birthday</a>
         </nav>	
-        <form action="#" method="post" id="contactForm" />
+        <form action="#" method="post" id="contactForm">
 			<fieldset>
 				<legend>Birthday Information</legend>
-				<ul>
+				<ul id="errors"></ul>
+                <ul id="questions">
+                <ul>
 					<li><label for="fname">First Name:</label><input id="fname" /></li>
 					<li><label for="lname">Last Name:</label><input id="lname" /></li>
 					<li><label for="date">Date of Birth:</label><input id="date" /></li>
